@@ -557,6 +557,7 @@ class EventsStore(SQLBaseStore):
                         to_return.update(evs)
                     defer.returnValue(to_return)
 
+                logger.info("Resolving conflicted state for %s", room_id)
                 current_state = yield resolve_events_with_factory(
                     state_sets,
                     state_map_factory=get_events,
